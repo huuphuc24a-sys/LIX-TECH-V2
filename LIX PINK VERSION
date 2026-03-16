@@ -135,6 +135,11 @@ local function rotateCamera165()
 	camera.CFrame = CFrame.new(camera.CFrame.Position, camera.CFrame.Position - lookVector)
 end
 
+-- ====== QUAY CAMERA LẦN 2 ======
+local function rotateCamera165Second()
+	rotateCamera165()
+end
+
 -- ====== ANIM ======
 local ATTACK_ANIMS = {
 	"10503381238",
@@ -165,26 +170,12 @@ local function onAnimationPlayed(track)
 			task.spawn(startCooldownBar)
 
 			task.delay(0.26, function()
+	sendDash()
 
-				sendDash()
+	task.delay(0.2, rotateCamera165)
 
-				task.delay(0.2, function()
-
-					rotateCamera165() -- xoay camera lần 1
-
-					task.delay(0.2, function()
-
-						rotateCamera165() -- xoay camera lần 2
-
-					end)
-
-				end)
-
-			end)
-		end
-	end
-end
-	end
+	task.delay(0.35, rotateCamera165Second)
+end)
 end
 -- ====== CHARACTER ======
 local function onCharacterAdded(char)
